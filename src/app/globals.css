@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
+/*
+  Personaliza aquí los colores de tu marca. Con solo cambiar --brand
+  la tienda toma la identidad de tu negocio (celulares, autos, ropa...).
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand: #2563eb;
+  --brand-dark: #1d4ed8;
+  --brand-foreground: #ffffff;
+  --background: #f7f7f8;
+  --foreground: #18181b;
 }
 
 @theme inline {
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-foreground: var(--brand-foreground);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-brand text-brand-foreground hover:bg-brand-dark;
+}
+@utility btn-secondary {
+  @apply btn border border-zinc-300 bg-white text-zinc-800 hover:bg-zinc-50;
+}
+@utility btn-danger {
+  @apply btn bg-red-600 text-white hover:bg-red-700;
+}
+@utility input {
+  @apply w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20;
+}
+@utility label {
+  @apply mb-1 block text-sm font-medium text-zinc-700;
+}
+@utility card {
+  @apply rounded-xl border border-zinc-200 bg-white;
+}
+@utility badge {
+  @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
 }
